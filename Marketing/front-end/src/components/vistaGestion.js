@@ -99,7 +99,7 @@ const VistaGestion = () => {
                             </button>
                         </form>
                     </div>
-                    <div className="table-responsive">
+                    <div className={`${styles.containerTabla} table-responsive`}>
                         <table className="table table-info table-hover align-middle">
                             <thead className="table-light align-middle">
                                 <tr>

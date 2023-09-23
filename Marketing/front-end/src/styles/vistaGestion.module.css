@@ -17,6 +17,7 @@
 
 body{
     font-size: 1rem;
+
 }
 
 a{
@@ -57,7 +58,7 @@ li{
     cursor: pointer;
     background-color: transparent;
     border: none;
-    width: 90%;
+    width: 100%;
     border-radius: 3px;
     transition:font-weight .3s ease, transform .3s ease;
 }
@@ -66,9 +67,7 @@ li{
     font-weight: bold;
     color: var(--color-btn-primary);
     transform: scale(1.1);
-}
-
-
+}   
 
 
 /* padding de la barraBusqueda y la tabla */
@@ -116,8 +115,29 @@ li{
     box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
 }
 
-/* .tablaVisualizacion{
-    width: 100%;
-} */
+.containerTabla{
+    height: 70vh;
+}
 
-/* falta estilizar la tabla */
+/* configurando el scrollbar */
+
+body::-webkit-scrollbar{
+    width: 15px;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: var(--color-border);
+    border-radius: 10px;
+}
+
+.containerTabla::-webkit-scrollbar{
+    width: 9px;
+}
+.containerTabla::-webkit-scrollbar:hover{
+    width: 19px;
+}
+
+.containerTabla::-webkit-scrollbar-thumb{
+    background-color: var(--color-border);
+    border-radius: 10px;
+}

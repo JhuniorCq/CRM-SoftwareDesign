@@ -96,8 +96,9 @@ body{
     position: absolute;
     border-radius: 3px;
     border: 1px solid var(--color-primario);
-    left: 1400px;
-    top: 4rem;
+    top: 60%;
+    right: 50%;
+    transform: translate(210%, -50%);
     min-height: 80vh;
     /* configuramos la altura de la sección crear notas */
     width: 28rem;
@@ -105,14 +106,16 @@ body{
     z-index: 10000;
     background-color: whitesmoke;
     font-size: .9rem;
-    transition: left .3s ease;
+    transition: opacity .3s ease;
     display: flex;
     flex-direction: column;
     gap: 1em;
+    opacity: 0;
 }
 
 .open{
-    left: 815px;
+    transform: translate(141%, -51%);
+    opacity: 1;
 }
 
 .formCrearNota{
