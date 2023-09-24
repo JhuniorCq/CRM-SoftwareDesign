@@ -1,0 +1,506 @@
+@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
+
+:root{
+    --color-primario : #2D3E50;
+    --color-btn-light : #c4beeb;
+    --color-btn-primary : #6959cb;
+    --color-border : rgba(0, 0, 0, 0.173);
+    --color-fechas : rgb(213, 197, 197);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    font-size: 1rem;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.anchor{
+    text-decoration: none;
+    color: white;
+}
+
+.hamburguer{
+    color: white;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+li{
+    list-style: none;
+}
+
+
+nav{
+    position: relative;
+    background-color: var(--color-primario);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 4rem;
+    font-size: 1.1rem;
+    padding: 0 1.8rem;
+    color: wheat;
+}
+
+ul{
+    
+    width: 20vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+.tools{
+
+    display: flex;
+    align-items: flex-end;
+    height: 2.8rem;
+}
+.contenidoLateral{
+    border: 1px solid var(--color-primario);
+    position: absolute;
+    width: 325px;
+    z-index: 10;
+    left: -350px;
+    transition: left .3s ease;
+    overflow-y: hidden;
+    height: 800px;
+
+    /* CAMBIAR EN CASO SE VEA RARO EL HEIGHT DEL CONTENIDO LATERAL */
+    /* 
+     */
+     /*  */
+     /* AVISO */
+     /* AVISO ARRIBA */
+}
+
+.open{  
+    left: 0;
+}
+
+.list{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 2rem;
+    background-color: whitesmoke;
+
+    
+    color: var(--color-primario);
+    font-size: 1.1rem;
+    
+}
+
+.list__item{
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    
+    
+}
+
+.list__item.list__item__click{
+    cursor: pointer;
+    
+}
+
+
+.list__button{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    width: 70%;
+}
+
+
+.arrow .list__arrow{
+    transform: rotate(90deg);
+}
+
+.list__arrow{
+    transition: transform .3s ease;
+    margin: auto;
+    }
+
+/* enlaces */
+.nav__link{
+    color: #303440;
+    display: block;
+    padding: 0.9rem 0;
+    text-decoration: none;
+}
+
+.nav__link__click{
+    padding: 0.9rem 0;
+    
+}
+
+/* sublista adentro */
+
+.list__show{
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    border-left: 2px solid var(--color-primario);
+    height: 0;
+    transition: height 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity .3s ease;
+    opacity: 0;
+    /* se controlará la altura en JS */
+    overflow-y: hidden;
+}
+
+.openTwo{
+    opacity: 1;
+    height: 330px;
+
+}
+
+.list__inside{
+    overflow-y: hidden;
+}
+
+.nav__link__inside{
+    border-radius: 6px;
+    padding-left: 1rem;
+    transition: background-color .3s ease;
+    background-color: whitesmoke;
+}
+
+.nav__link__inside:hover{
+    background-color: #96a1ac;
+}
+
+
+/* estilizando la linea de campanas y los 2 botones 'analisis' y 'crear Campaña' */
+
+.campanasAnalisis{
+    margin-top: 1.5rem;
+}
+
+.despuesDelNavbar{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1.8rem;
+}
+
+
+/* estilizando a los botones */
+
+.buttons{
+    height: 40px;
+    width: 20rem;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.campana > h1{
+    font-family:sans-serif;   
+}
+
+
+.botonCrearCampana{
+    border: none;
+    border-radius: 7px;
+    width: 130px;
+    cursor: pointer;
+    background-color: var(--color-btn-primary);
+    color: white;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    font-family: sans-serif;
+
+} 
+
+.botonCrearCampana:hover{
+    
+    background-color: rgb(59, 59, 208);
+}
+
+/* colocando un efecto cuando se hace hover a cada 'anchor' (gestión y calendario)  */
+
+.containerRoutes{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.containerRoutes .redirection{
+    width: 29rem;
+
+}
+
+.containerRoutes .redirection > li > a{
+    font-size: 1.3rem; 
+    color: black;
+    font-family: 'Mooli', sans-serif;
+    transition: font-size 0.3s ease, font-weight 0.3s ease;
+    text-decoration: none;
+}
+
+.containerRoutes .redirection > li > a:hover{
+    color: var(--color-btn-primary);
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* coloqué que los botones de gestión y calenadario se alcen un poco cuando se haga hover: */
+
+.containerRoutes .redirection > li{
+    transition: transform 0.3s ease;
+}
+
+.containerRoutes .redirection > li:hover{
+    transform: translate(0, -10%);
+}
+
+/* estilizando el menu flotante que se activa al darle click al boton CREAR CAMPAÑA */
+
+.menuFlotanteCrearCampana{
+    position: absolute;
+    border-radius: 3px;
+    border: 1px solid var(--color-primario);
+    right: 0;
+    top: 4rem;
+    min-height: 100vh;
+    width: 28rem;
+    padding: 1.3rem;
+    z-index: -1; /* el z-index me ayuda a que no se sobreponga así tenga el opacity en 0. */
+    background-color: whitesmoke;
+    transition: height .3s ease, opacity .3s ease;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.openThree{
+    z-index: 10000;
+    opacity: 1;
+}
+
+.formCrearCampana{
+    
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.tituloForm{
+    font-family: 'Mooli', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin: .5rem 0;
+}
+
+.cerrarMenu{
+    cursor: pointer;
+    color: #303440;
+    font-size: 2rem;
+}
+
+.containerNombreCampana, .containerFechaInicioCampanas,
+.containerFechaFinCampanas , .containerObjetivosCampanas, 
+.containerPublicoObjetivoCampana, .containerNotas{
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.containerNombreCampana > input, .containerFechaInicioCampanas > input, 
+.containerFechaFinCampanas >input, .containerObjetivosCampanas > input, 
+.containerPublicoObjetivoCampana > input, .containerNotas > input{
+    border-radius: 3px;
+    border: 1px solid var(--color-btn-primary);
+    outline: none;
+    font-family: 'Mooli', sans-serif;
+    height: 1.8rem
+}
+
+.containerNombreCampana > label, .containerFechaInicioCampanas > label,  
+.containerFechaFinCampanas > label, .containerObjetivosCampanas > label, 
+.containerPublicoObjetivoCampana > label, .containerNotas > label{
+    font-family: 'Mooli', sans-serif;
+    letter-spacing: 1.5px;
+    margin-bottom: .7rem;
+}
+
+
+.textAreaa{
+    resize: none;
+}
+
+.botonesMenu{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.boton{
+    border-radius: 7px;
+    border: none;
+    color: white;
+    padding: .6rem 1.6rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.boton__crear{
+    background-color: var(--color-btn-primary);
+    transition: background-color .3s ease;
+}
+
+.boton__crear:hover{
+    background-color: rgb(59, 59, 208);
+}
+
+.boton__cancelar{
+    background-color: var(--color-btn-primary);
+    transition: background-color .3s ease;
+}
+
+.boton__cancelar:hover{
+    background-color: rgb(59, 59, 208);
+}
+
+
+.publicoObjetivo{
+    border-radius: 10px;
+    border: none;
+    background-color: steelblue;
+    color: white;
+    padding: .25rem 0;
+    cursor: pointer;
+    font-family: 'Mooli', sans-serif;
+    letter-spacing: 1.5px;
+    margin-bottom: .7rem;
+    transition: background-color .3s ease;
+    text-align: center;
+}
+
+.publicoObjetivo:hover{
+    background-color: rgb(35, 112, 175);
+}
+
+.asterisco{
+    color: orangered;
+    font-weight: bold;
+}
+
+/* menu popup al clickear publico Objetivo de la campaña */
+
+
+.menuPopupPublicoObjetivo {
+    position: fixed;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    z-index: -1; /* el z-index me ayuda a que no se sobreponga así tenga el opacity en 0. */
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border: 1px solid var(--color-primario);
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity .3s ease;
+
+}
+
+.showMenuPopup{
+    z-index: 100000;
+    opacity: 1;
+}
+
+.labelsPublicoCampana{
+    display: flex;
+    gap: 5rem;
+}
+
+.labelsPublicoCampana > label{
+    font-family: 'Mooli', sans-serif;
+}
+
+.inputsPublicoCampana{
+    display: flex;
+    gap: 2rem;
+    font-family: 'Mooli', sans-serif;
+    height: 2.4rem;
+}
+
+.distritoPublicoCampana{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    font-family: 'Mooli', sans-serif;
+}
+
+.departamentoPublicoCampana{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.labelsPublicoCampana2 > label{
+    font-family: 'Mooli', sans-serif;
+}
+
+.hamburguerPopup{
+    color: var(--color-primario);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: font-size .3s ease;
+}
+
+.hamburguerPopup:hover {
+    font-size: 1.4rem;
+    font-weight: bold;
+    
+}
+
+/* creando el submenu 2 de FUNCIONALIDADES */
+.openFour{
+    height: 220px
+}
+
+/* customizando el color de los selects */
+
+.customSelect{
+    width: 100%;
+  padding: 10px;
+
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+  font-family: 'Mooli', sans-serif;
+  transition: border .2s ease;
+}
+
+.customSelect:focus {
+    /* Estilos cuando el select está enfocado */
+    border: 1px solid #007bff; /* Cambia el color del borde cuando se enfoca */
+    outline: none; /* Elimina el resplandor predeterminado en el enfoque */
+}
+  
+  
+  
+  
+  
+  
