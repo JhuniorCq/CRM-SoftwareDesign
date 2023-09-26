@@ -103,7 +103,7 @@ body{
     /* configuramos la altura de la sección crear notas */
     width: 28rem;
     padding: 1.3rem;
-    z-index: 10000;
+    z-index: -1;
     background-color: whitesmoke;
     font-size: .9rem;
     transition: opacity .3s ease;
@@ -114,6 +114,7 @@ body{
 }
 
 .open{
+    z-index: 10000;
     transform: translate(141%, -51%);
     opacity: 1;
 }

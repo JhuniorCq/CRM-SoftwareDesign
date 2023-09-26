@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faBell, faBars, faMagnifyingGlass, faGear, faChevronRight, faHouse, faChartColumn, faEnvelope, faXmark , faChevronDown} from "@fortawesome/free-solid-svg-icons"
+import {faBell, faBars, faMagnifyingGlass, faGear, faChevronRight, faHouse, faChartColumn, faEnvelope, faXmark , faChevronDown} from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/navbar.module.css";
 import { faServicestack } from "@fortawesome/free-brands-svg-icons";
 import { distritosPorDepartamento, departamentos } from "./dataDistritosDepartamentos";
@@ -21,10 +21,10 @@ const Navbar = (props) => {
 
     const [isDropDownOpen, setIsDropDownOpen] = useState(false);
     const [subMenuOpen, setSubMenuOpen] = useState(false);
+    const [subMenuOpen2, setSubMenuOpen2] = useState(false);
     const [crearCampana, setCrearCampana] = useState(false);
     const [publicoObjetivoIsClicked, setPublicoObjetivoIsClicked] = useState(false);
     const [selectedDepartamento, setSelectedDepartamento] = useState('');
-    const [subMenuOpen2, setSubMenuOpen2] = useState(false);
 
     const handleDepartamentoChange = (e) => {
         setSelectedDepartamento(e.target.value);
@@ -36,6 +36,9 @@ const Navbar = (props) => {
     }
 
     const toggleSubMenu = () => {
+        if(subMenuOpen2 === true){
+            setSubMenuOpen2(!subMenuOpen2);
+        }
         setSubMenuOpen(!subMenuOpen);
     }
 
@@ -44,6 +47,9 @@ const Navbar = (props) => {
     }
 
     const toggleSubMenu2 = () => {
+        if(subMenuOpen === true){
+            setSubMenuOpen(!subMenuOpen);
+        }
         setSubMenuOpen2(!subMenuOpen2);
     }
 
@@ -120,21 +126,22 @@ const Navbar = (props) => {
                         <FontAwesomeIcon icon={subMenuOpen2 ? faChevronDown : faChevronRight} className={styles.list__arrow} />
                     </div>
 
+
                         <ul className={`${styles.list__show} ${subMenuOpen2 ? styles.openFour : ''}`}>
                         <li className={styles.list__inside}>
-                            <a href="#a" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Autoconsulta</a>
+                            <a href="/gestion" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Campañas</a>
                         </li>
                         <li className={styles.list__inside}>
-                            <a href="#b" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Clientes</a>
+                            <a href="#b" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Segmentación de mercado</a>
                         </li>
                         <li className={styles.list__inside}>
-                            <a href="#c" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Marketing</a>
+                            <a href="#c" className={`${styles.nav__link} ${styles.nav__link__inside}`}>LLamadas</a>
                         </li>
                         <li className={styles.list__inside}>
-                            <a href="#c" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Reclamos</a>
+                            <a href="#c" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Correos</a>
                         </li>
                         <li className={styles.list__inside}>
-                            <a href="#c" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Reclamos</a>
+                            <a href="#c" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Sorteos</a>
                         </li>
                     </ul>
                 </li>
@@ -215,6 +222,10 @@ const Navbar = (props) => {
                                         </option>
                                     ))}
                             </select>
+                        </div>
+                        <div className={styles.containerBotonesPopup}>
+                            <button className={styles.botonPopup} >Guardar</button>
+                            <button className={styles.botonPopup}> Borrar </button>
                         </div>
 
                     </form>

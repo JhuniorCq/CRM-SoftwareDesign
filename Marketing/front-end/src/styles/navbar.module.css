@@ -75,13 +75,6 @@ ul{
     transition: left .3s ease;
     overflow-y: hidden;
     height: 800px;
-
-    /* CAMBIAR EN CASO SE VEA RARO EL HEIGHT DEL CONTENIDO LATERAL */
-    /* 
-     */
-     /*  */
-     /* AVISO */
-     /* AVISO ARRIBA */
 }
 
 .open{  
@@ -181,6 +174,13 @@ ul{
 
 .nav__link__inside:hover{
     background-color: #96a1ac;
+}
+
+/* creando el submenu 2 de FUNCIONALIDADES */
+.openFour{
+    height: 302px;
+    opacity: 1;
+
 }
 
 
@@ -411,7 +411,7 @@ ul{
     left: 30%;
     transform: translate(-50%, -50%);
     width: 400px;
-    height: 400px;
+    height: 500px;
     z-index: -1; /* el z-index me ayuda a que no se sobreponga así tenga el opacity en 0. */
     background-color: whitesmoke;
     border-radius: 10px;
@@ -473,11 +473,6 @@ ul{
     
 }
 
-/* creando el submenu 2 de FUNCIONALIDADES */
-.openFour{
-    height: 220px
-}
-
 /* customizando el color de los selects */
 
 .customSelect{
@@ -499,8 +494,25 @@ ul{
     outline: none; /* Elimina el resplandor predeterminado en el enfoque */
 }
   
+.containerBotonesPopup{
+    display: flex;
+    justify-content: space-around;    
+    padding: 1rem 0;
+}  
   
+.botonPopup{
+    border: none;
+    border-radius: 10px;
+    background-color: steelblue;
+    color: white;
+    font-family: 'Mooli', sans-serif;
+    padding: .5rem 1rem;
+    transition: font-weight .3s ease, transform .3s ease;
+}
   
-  
+.botonPopup:hover{
+    font-weight: bold;
+    transform: scale(1.1);
+}
   
   
