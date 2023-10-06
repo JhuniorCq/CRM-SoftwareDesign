@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 import styles from "../styles/navbarCorreo.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faBell, faBars, faMagnifyingGlass, faGear, faChevronRight, faHouse, faChartColumn, faEnvelope, faXmark , faChevronDown} from "@fortawesome/free-solid-svg-icons";
 import { faServicestack } from "@fortawesome/free-brands-svg-icons";
+import {FaXmark} from "react-icons/fa6";
+
+import { Link } from "react-router-dom";
+
+
 
 const NavbarCorreo = () => {
 
@@ -32,6 +37,33 @@ const NavbarCorreo = () => {
     const toggleCrearCorreo = () => {
         setCrearCorreo(!crearCorreo);
     }
+
+    const tituloCorreoID = useId();
+    const asuntoCorreoID = useId();
+    const mensajeCorreoID = useId();
+
+    const [correo, setCorreo] = useState("");
+    const [errorCorreo, setErrorCorreo] = useState("");
+
+    const handleCorreoChange = (e) => {
+        const nuevoCorreo = e.target.value;
+        setCorreo(nuevoCorreo);
+
+        const correoRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+        if (!correoRegex.test(nuevoCorreo)) {
+            setErrorCorreo("Correo electrónico no válido");
+        } else {
+            setErrorCorreo("");
+        }
+    }
+
+
+    useEffect(() => {
+        handleCorreoChange({ 
+            target: { value: correo} 
+        });
+      }, [correo]);
 
     return(
         <header>
@@ -105,16 +137,16 @@ const NavbarCorreo = () => {
 
                         <ul className={`${styles.list__show} ${subMenuOpen2 ? styles.openFour : ''}`}>
                         <li className={styles.list__inside}>
-                            <a href="/gestion" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Campañas</a>
+                            <Link to={'/'} className={`${styles.nav__link} ${styles.nav__link__inside}`}>Campañas</Link>
                         </li>
                         <li className={styles.list__inside}>
-                            <a href="#b" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Segmentación de mercado</a>
+                            <Link to={'/calendario'} className={`${styles.nav__link} ${styles.nav__link__inside}`}>Segmentación de mercado</Link>
                         </li>
                         <li className={styles.list__inside}>
                             <a href="#c" className={`${styles.nav__link} ${styles.nav__link__inside}`}>LLamadas</a>
                         </li>
                         <li className={styles.list__inside}>
-                            <a href="#c" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Correos</a>
+                            <Link to={'/correo'} className={`${styles.nav__link} ${styles.nav__link__inside}`}>Correos</Link>
                         </li>
                         <li className={styles.list__inside}>
                             <a href="#c" className={`${styles.nav__link} ${styles.nav__link__inside}`}>Sorteos</a>
@@ -149,6 +181,32 @@ const NavbarCorreo = () => {
                     </div>
                 </div>
         </section>
+
+        <div className={`${styles.containerMenuLateralCrearCorreo} ${crearCorreo ? styles.toggleCrearCorreoMenu : ""}`}>
+                    <button className={styles.cerrarMenuLateral} onClick={toggleCrearCorreo}><FaXmark /></button>
+                    <div className={styles.containerTituloCorreo}>
+                        <label htmlFor={tituloCorreoID}>Título del correo</label>
+                        <input 
+                        type="email" 
+                        required 
+                        placeholder="name@email.com" 
+                        value={correo}
+                        onChange={handleCorreoChange}
+                        />
+                        {/* {errorCorreo && <p className={styles.error}>{errorCorreo}</p>} */}
+                    </div>
+                    <div className={styles.containerAsuntoCorreo}>
+                        <label htmlFor={asuntoCorreoID}>Asunto:</label>
+                        <input type="text" required minLength={5} placeholder="Asunto aquí..." />
+                    </div>
+                    <div className={styles.containerMensajeCorreo}>
+                        <label htmlFor={mensajeCorreoID}>Mensaje:</label>
+                        <textarea required minLength={1} cols={10}/>
+                    </div>
+
+                    <button className={styles.btnCrearCorreo1}>Siguiente</button>
+                
+                </div>
         
         </header>
 

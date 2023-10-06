@@ -13,16 +13,16 @@ export const departamentos = [
     { id: 'Huanuco', nombre: 'Huanuco' },
     { id: 'Ica', nombre: 'Ica' },
     { id: 'Junin', nombre: 'Junin' },
-    { id: 'La Libertad', nombre: 'La Libertad' },
+    { id: 'La_Libertad', nombre: 'La Libertad' },
     { id: 'Lambayeque', nombre: 'Lambayeque' },
     { id: 'Lima', nombre: 'Lima' },
     { id: 'Loreto', nombre: 'Loreto' },
-    { id: 'Madre de Dios', nombre: 'Madre de Dios' },
+    { id: 'Madre_de_Dios', nombre: 'Madre de Dios' },
     { id: 'Moquegua', nombre: 'Moquegua' },
     { id: 'Pasco', nombre: 'Pasco' },
     { id: 'Piura', nombre: 'Piura' },
     { id: 'Puno', nombre: 'Puno' },
-    { id: 'San Martin', nombre: 'San Martin' },
+    { id: 'San_Martin', nombre: 'San Martin' },
     { id: 'Tacna', nombre: 'Tacna' },
     { id: 'Tumbes', nombre: 'Tumbes' },
     { id: 'Ucayali', nombre: 'Ucayali' }
@@ -169,7 +169,7 @@ export const distritosPorDepartamento = {
         { id: 'Yauli', nombre: 'Yauli' },
         { id: 'Chupaca', nombre: 'Chupaca' },
     ],
-    LaLibertad: [
+    La_Libertad: [
         { id: 'Trujillo', nombre: 'Trujillo' },
         { id: 'Ascope', nombre: 'Ascope' },
         { id: 'Bolivar', nombre: 'Bolivar' },
@@ -211,7 +211,7 @@ export const distritosPorDepartamento = {
         { id: 'Requena', nombre: 'Requena' },
         { id: 'Ucayali', nombre: 'Ucayali' },
     ],
-    MadreDeDios: [
+    Madre_de_Dios: [
         { id: 'Tambopata', nombre: 'Tambopata' },
         { id: 'Manu', nombre: 'Manu' },
         { id: 'Tahuamanu', nombre: 'Tahuamanu' },
@@ -250,7 +250,7 @@ export const distritosPorDepartamento = {
         { id: 'Sandia', nombre: 'Sandia' },
         { id: 'Yunguyo', nombre: 'Yunguyo' },
     ],
-    SanMartin: [
+    San_Martin: [
         { id: 'Moyobamba', nombre: 'Moyobamba' },
         { id: 'Bellavista', nombre: 'Bellavista' },
         { id: 'El Dorado', nombre: 'El Dorado' },
