@@ -14,6 +14,10 @@ const paginaPrincipal =  () => {
                 <button>CALENDARIO</button>
             </Link>
 
+            <Link to={'/correo'}>
+                <button>CORREO</button>
+            </Link>
+
         </div>
 
     );

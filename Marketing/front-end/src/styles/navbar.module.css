@@ -75,13 +75,6 @@ ul{
     transition: left .3s ease;
     overflow-y: hidden;
     height: 800px;
-
-    /* CAMBIAR EN CASO SE VEA RARO EL HEIGHT DEL CONTENIDO LATERAL */
-    /* 
-     */
-     /*  */
-     /* AVISO */
-     /* AVISO ARRIBA */
 }
 
 .open{  
@@ -181,6 +174,13 @@ ul{
 
 .nav__link__inside:hover{
     background-color: #96a1ac;
+}
+
+/* creando el submenu 2 de FUNCIONALIDADES */
+.openFour{
+    height: 302px;
+    opacity: 1;
+
 }
 
 
@@ -294,13 +294,6 @@ ul{
     opacity: 1;
 }
 
-.formCrearCampana{
-    
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
 .tituloForm{
     font-family: 'Mooli', sans-serif;
     font-weight: bold;
@@ -314,193 +307,5 @@ ul{
     font-size: 2rem;
 }
 
-.containerNombreCampana, .containerFechaInicioCampanas,
-.containerFechaFinCampanas , .containerObjetivosCampanas, 
-.containerPublicoObjetivoCampana, .containerNotas{
-    
-    display: flex;
-    flex-direction: column;
-}
-
-.containerNombreCampana > input, .containerFechaInicioCampanas > input, 
-.containerFechaFinCampanas >input, .containerObjetivosCampanas > input, 
-.containerPublicoObjetivoCampana > input, .containerNotas > input{
-    border-radius: 3px;
-    border: 1px solid var(--color-btn-primary);
-    outline: none;
-    font-family: 'Mooli', sans-serif;
-    height: 1.8rem
-}
-
-.containerNombreCampana > label, .containerFechaInicioCampanas > label,  
-.containerFechaFinCampanas > label, .containerObjetivosCampanas > label, 
-.containerPublicoObjetivoCampana > label, .containerNotas > label{
-    font-family: 'Mooli', sans-serif;
-    letter-spacing: 1.5px;
-    margin-bottom: .7rem;
-}
-
-
-.textAreaa{
-    resize: none;
-}
-
-.botonesMenu{
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 1rem;
-}
-
-.boton{
-    border-radius: 7px;
-    border: none;
-    color: white;
-    padding: .6rem 1.6rem;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.boton__crear{
-    background-color: var(--color-btn-primary);
-    transition: background-color .3s ease;
-}
-
-.boton__crear:hover{
-    background-color: rgb(59, 59, 208);
-}
-
-.boton__cancelar{
-    background-color: var(--color-btn-primary);
-    transition: background-color .3s ease;
-}
-
-.boton__cancelar:hover{
-    background-color: rgb(59, 59, 208);
-}
-
-
-.publicoObjetivo{
-    border-radius: 10px;
-    border: none;
-    background-color: steelblue;
-    color: white;
-    padding: .25rem 0;
-    cursor: pointer;
-    font-family: 'Mooli', sans-serif;
-    letter-spacing: 1.5px;
-    margin-bottom: .7rem;
-    transition: background-color .3s ease;
-    text-align: center;
-}
-
-.publicoObjetivo:hover{
-    background-color: rgb(35, 112, 175);
-}
-
-.asterisco{
-    color: orangered;
-    font-weight: bold;
-}
-
-/* menu popup al clickear publico Objetivo de la campaña */
-
-
-.menuPopupPublicoObjetivo {
-    position: fixed;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
-    z-index: -1; /* el z-index me ayuda a que no se sobreponga así tenga el opacity en 0. */
-    background-color: whitesmoke;
-    border-radius: 10px;
-    border: 1px solid var(--color-primario);
-    padding: 1.5rem;
-    opacity: 0;
-    transition: opacity .3s ease;
-
-}
-
-.showMenuPopup{
-    z-index: 100000;
-    opacity: 1;
-}
-
-.labelsPublicoCampana{
-    display: flex;
-    gap: 5rem;
-}
-
-.labelsPublicoCampana > label{
-    font-family: 'Mooli', sans-serif;
-}
-
-.inputsPublicoCampana{
-    display: flex;
-    gap: 2rem;
-    font-family: 'Mooli', sans-serif;
-    height: 2.4rem;
-}
-
-.distritoPublicoCampana{
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    font-family: 'Mooli', sans-serif;
-}
-
-.departamentoPublicoCampana{
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
-
-.labelsPublicoCampana2 > label{
-    font-family: 'Mooli', sans-serif;
-}
-
-.hamburguerPopup{
-    color: var(--color-primario);
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: font-size .3s ease;
-}
-
-.hamburguerPopup:hover {
-    font-size: 1.4rem;
-    font-weight: bold;
-    
-}
-
-/* creando el submenu 2 de FUNCIONALIDADES */
-.openFour{
-    height: 220px
-}
-
-/* customizando el color de los selects */
-
-.customSelect{
-    width: 100%;
-  padding: 10px;
-
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #333;
-  font-size: 16px;
-  font-family: 'Mooli', sans-serif;
-  transition: border .2s ease;
-}
-
-.customSelect:focus {
-    /* Estilos cuando el select está enfocado */
-    border: 1px solid #007bff; /* Cambia el color del borde cuando se enfoca */
-    outline: none; /* Elimina el resplandor predeterminado en el enfoque */
-}
-  
-  
-  
-  
   
   
