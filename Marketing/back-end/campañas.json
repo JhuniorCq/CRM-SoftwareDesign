@@ -196,30 +196,210 @@
       "id": 15
     },
     {
-      "name": "holaaaa",
-      "starts": "2024-01-04",
-      "ends": "2024-01-19",
-      "objectives": "wada",
-      "description": "HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "targeredAge": "rangoEdad4",
+      "name": "ggggggg",
+      "starts": "2023-12-13",
+      "ends": "2023-12-19",
+      "objectives": "owain",
+      "description": "holaaaaa",
+      "targeredAge": "rangoEdad2",
       "gender": "femenino",
-      "department": "Lambayeque",
-      "district": "Lima",
-      "created": "2023-10-06",
+      "department": "Junin",
+      "district": "Chupaca",
+      "created": "2023-10-08",
       "id": 16
     },
     {
-      "name": "holaaaa",
-      "starts": "2024-01-04",
-      "ends": "2024-01-19",
-      "objectives": "wada",
-      "description": "HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "name": "NOMBRE CAMPAÑA PRUEBAAAAA",
+      "starts": "2023-11-13",
+      "ends": "2023-11-22",
+      "objectives": "oaidodn",
+      "description": "awdaawd",
       "targeredAge": "rangoEdad4",
-      "gender": "femenino",
-      "department": "Lambayeque",
-      "district": "Lima",
-      "created": "2023-10-06",
+      "gender": "masculino",
+      "department": "La_Libertad",
+      "district": "Santiago de Chuco",
+      "created": "2023-10-08",
       "id": 17
+    },
+    {
+      "name": "aaaaaaaaaaaaaaaaaaaa",
+      "starts": "2023-11-13",
+      "ends": "2023-11-21",
+      "objectives": "alalalal",
+      "description": "DESCRIPCION DE EJEMPLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+      "targeredAge": "rangoEdad1",
+      "gender": "masculino",
+      "department": "Huancavelica",
+      "district": "Churcampa",
+      "created": "2023-10-08",
+      "id": 18
+    },
+    {
+      "name": "pruebita de restricciones",
+      "starts": "2023-03-12",
+      "ends": "2023-05-12",
+      "objectives": "as",
+      "description": "dwaadadadasdada",
+      "targeredAge": "rangoEdad2",
+      "gender": "femenino",
+      "department": "Lima",
+      "district": "Huaura",
+      "created": "2023-10-08",
+      "id": 19
+    },
+    {
+      "name": "eeeeeeee",
+      "starts": "2023-11-12",
+      "ends": "2023-12-12",
+      "objectives": "eeeeeeee",
+      "description": "hl",
+      "targeredAge": "rangoEdad5",
+      "gender": "masculino",
+      "department": "Lambayeque",
+      "district": "Lambayeque",
+      "created": "2023-10-08",
+      "id": 20
+    },
+    {
+      "name": "pruebinha",
+      "starts": "2023-11-12",
+      "ends": "2023-12-12",
+      "objectives": "eeeeeeee",
+      "description": "hl",
+      "targeredAge": "rangoEdad5",
+      "gender": "masculino",
+      "department": "Lambayeque",
+      "district": "Lambayeque",
+      "created": "2023-10-08",
+      "id": 21
+    },
+    {
+      "name": "hol",
+      "starts": "2024-12-12",
+      "ends": "2025-12-12",
+      "objectives": "alalalalal",
+      "description": "Opcional",
+      "targeredAge": "rangoEdad3",
+      "gender": "masculino",
+      "department": "La_Libertad",
+      "district": "Santiago de Chuco",
+      "created": "2023-10-11",
+      "id": 22
+    },
+    {
+      "name": "eeeeeeeeeee",
+      "starts": "1212-12-12",
+      "ends": "1213-12-12",
+      "objectives": "eeee",
+      "description": "caacacacacacacacacaacac",
+      "targeredAge": "4-5", 
+      "gender": "femenino",
+      "department": "La_Libertad",
+      "district": "Pataz",
+      "created": "2023-10-12",
+      "id": 23
+    }
+  ],
+  "publicocorreoscampanas": [
+    {
+      "id": 1,
+      "name": "Carlos",
+      "surname": "Serpa",
+      "email": "carlosserpa@gmail.com",
+      "gender": "masculino",
+      "celphone": "987654321"
+    },
+    {
+      "id": 2,
+      "name": "Ana",
+      "surname": "García",
+      "email": "anagarcia@hotmail.com",
+      "gender": "femenino",
+      "celphone": "912345678"
+    },
+    {
+      "id": 3,
+      "name": "María",
+      "surname": "López",
+      "email": "marialopez@outlook.com",
+      "gender": "femenino",
+      "celphone": "956789012"
+    },
+    {
+      "id": 4,
+      "name": "Juan",
+      "surname": "Pérez",
+      "email": "juanperez@gmail.com",
+      "gender": "masculino",
+      "celphone": "945678901"
+    },
+    {
+      "id": 5,
+      "name": "Laura",
+      "surname": "Ramírez",
+      "email": "lauraramirez@hotmail.com",
+      "gender": "femenino",
+      "celphone": "913456789"
+    },
+    {
+      "id": 6,
+      "name": "Pedro",
+      "surname": "Sánchez",
+      "email": "pedrosanchez@outlook.com",
+      "gender": "masculino",
+      "celphone": "965432109"
+    },
+    {
+      "id": 7,
+      "name": "Carmen",
+      "surname": "Fernández",
+      "email": "carmenfernandez@gmail.com",
+      "gender": "femenino",
+      "celphone": "978901234"
+    },
+    {
+      "id": 8,
+      "name": "Luis",
+      "surname": "Gómez",
+      "email": "luisgomez@hotmail.com",
+      "gender": "masculino",
+      "celphone": "954321098"
+    },
+    {
+      "id": 9,
+      "name": "Elena",
+      "surname": "Martínez",
+      "email": "elenamartinez@outlook.com",
+      "gender": "femenino",
+      "celphone": "911234567"
+    },
+    {
+      "id": 10,
+      "name": "Javier",
+      "surname": "Rodríguez",
+      "email": "javierrodriguez@gmail.com",
+      "gender": "masculino",
+      "celphone": "966789012"
+    }
+  ],
+  "correoscampanascreadas": [
+    {
+      "id": 1,
+      "email": "hola123@gmail.com",
+      "affair": "estoy probando , este es un asunto",
+      "message": "estoy probando, este es un mensaje"
+    },
+    {
+      "email": "aaa@hotmail.com",
+      "affair": "elelelele",
+      "message": "asnandaoidandio",
+      "id": 2
+    },
+    {
+      "email": "alalalalala@gmail.com",
+      "affair": "hola asunto raro",
+      "message": "holassasmaodmoiad",
+      "id": 3
     }
   ]
 }

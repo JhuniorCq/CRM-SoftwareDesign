@@ -2,11 +2,16 @@ import {create} from "zustand";
 import {persist} from "zustand/middleware";
 
 export const useCampanas = create(persist((set) => ({
-    dataCampanas : [],
-    addDataCampana : (campana) => set((state) => ({
-        dataCampanas : [...state.dataCampanas, campana]
+    correosEnviados : 0,
+
+    addCorreosEnviados : () => set((state) => ({
+        correosEnviados : state.correosEnviados + 1
     })),
     
-}), {
-    name : 'data-campanas'
+    removeCorreosEnviados : () => set((state) => ({
+        correosEnviados : state.correosEnviados - 1
+    }))
+}), 
+{
+    name : 'correos-campanas'
 }))

@@ -141,3 +141,20 @@ body::-webkit-scrollbar-thumb{
     background-color: var(--color-border);
     border-radius: 10px;
 }
+
+
+/* controlando el ancho de la tabla para que no se pueda sobrepasar al momento de colocar una descripción larguisima. */
+.campanaDescripcion{
+    max-width: 200px; /* Ajusta el ancho máximo según tus preferencias */
+    word-wrap: break-word;
+    white-space: pre-line;
+}
+
+.descripcion-column:hover {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+    z-index: 9999;
+    position: absolute;
+    background-color: white;
+  }

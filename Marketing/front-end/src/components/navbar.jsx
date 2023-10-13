@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useId } from "react";
+import React, { useState} from "react";
 import { Link } from 'react-router-dom';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faBell, faBars, faMagnifyingGlass, faGear, faChevronRight, faHouse, faChartColumn, faEnvelope, faXmark , faChevronDown} from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +14,6 @@ const Navbar = () => {
     const [subMenuOpen, setSubMenuOpen] = useState(false);
     const [subMenuOpen2, setSubMenuOpen2] = useState(false);
     const [crearCampana, setCrearCampana] = useState(false);
-
 
     const {dataCampanaIDs, addDataCampana} = useCampanas();
 
@@ -39,16 +38,6 @@ const Navbar = () => {
         }
         setSubMenuOpen2(!subMenuOpen2);
     }
-
-    // MANEJANDO EL SUBMIT DEL FORM
-
-    const handleSubmitForm = (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const newCampana = Object.fromEntries(formData);
-        addDataCampana(newCampana.id);
-    }
-
 
     return(
         <header>
@@ -182,7 +171,9 @@ const Navbar = () => {
 
             <hr/>
 
-            <aside className={`${styles.menuFlotanteCrearCampana} ${crearCampana ? styles.openThree : ''}`}>
+            <aside className={`
+            ${styles.menuFlotanteCrearCampana} 
+            ${crearCampana ? styles.openThree : ''} `}>
                 <div className={styles.cerrarMenu} onClick={toggleCrearCampana}>
                     <FontAwesomeIcon icon={faXmark} />
                 </div>
@@ -190,7 +181,10 @@ const Navbar = () => {
                 <div className={styles.tituloForm}>Título</div>
                 
                 <div className={styles.containerForm}>
-                    <FormCrearCampana />
+                    <FormCrearCampana 
+                    crearCampana={crearCampana} 
+                    setCrearCampana = {setCrearCampana}
+                    />
                 </div>
                 
             

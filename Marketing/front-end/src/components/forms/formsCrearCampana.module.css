@@ -115,4 +115,5 @@
 .botonDisabled {
     opacity: 0.5; /* Establece una opacidad para indicar que está deshabilitado */
     cursor: not-allowed; /* Cambia el cursor a "no permitido" para indicar que no se puede hacer clic */
+    transition: opacity .3s ease, cursor .3s ease;
   }

@@ -4,9 +4,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faBell, faBars, faMagnifyingGlass, faGear, faChevronRight, faHouse, faChartColumn, faEnvelope, faXmark , faChevronDown} from "@fortawesome/free-solid-svg-icons";
 import { faServicestack } from "@fortawesome/free-brands-svg-icons";
 import {FaXmark} from "react-icons/fa6";
+import FormsCrearCorreoCampana from "./forms/formsCrearCorreoCampana";
+import FormCrearCorreoDos from "./forms/formsCrearCorreoDOS";
+
 
 import { Link } from "react-router-dom";
-
 
 
 const NavbarCorreo = () => {
@@ -15,6 +17,11 @@ const NavbarCorreo = () => {
     const [subMenuOpen, setSubMenuOpen] = useState(false);
     const [subMenuOpen2, setSubMenuOpen2] = useState(false);
     const [crearCorreo, setCrearCorreo] = useState(false);
+
+    const [submitSiguiente, setSubmitSiguiente] = useState([]);
+
+    // esto es para saber si en el forms se ha clickeado el boton 'siguiente', para pasar al forms n° 02
+    const [siguienteIsClicked, setSiguienteIsClicked] = useState(false);
 
     const toggleLateralMenu = () => {
         setIsDropDownOpen(!isDropDownOpen);
@@ -37,34 +44,7 @@ const NavbarCorreo = () => {
     const toggleCrearCorreo = () => {
         setCrearCorreo(!crearCorreo);
     }
-
-    const tituloCorreoID = useId();
-    const asuntoCorreoID = useId();
-    const mensajeCorreoID = useId();
-
-    const [correo, setCorreo] = useState("");
-    const [errorCorreo, setErrorCorreo] = useState("");
-
-    const handleCorreoChange = (e) => {
-        const nuevoCorreo = e.target.value;
-        setCorreo(nuevoCorreo);
-
-        const correoRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-
-        if (!correoRegex.test(nuevoCorreo)) {
-            setErrorCorreo("Correo electrónico no válido");
-        } else {
-            setErrorCorreo("");
-        }
-    }
-
-
-    useEffect(() => {
-        handleCorreoChange({ 
-            target: { value: correo} 
-        });
-      }, [correo]);
-
+    
     return(
         <header>
             <nav className={styles.navbar}>
@@ -182,31 +162,27 @@ const NavbarCorreo = () => {
                 </div>
         </section>
 
-        <div className={`${styles.containerMenuLateralCrearCorreo} ${crearCorreo ? styles.toggleCrearCorreoMenu : ""}`}>
-                    <button className={styles.cerrarMenuLateral} onClick={toggleCrearCorreo}><FaXmark /></button>
-                    <div className={styles.containerTituloCorreo}>
-                        <label htmlFor={tituloCorreoID}>Título del correo</label>
-                        <input 
-                        type="email" 
-                        required 
-                        placeholder="name@email.com" 
-                        value={correo}
-                        onChange={handleCorreoChange}
-                        />
-                        {/* {errorCorreo && <p className={styles.error}>{errorCorreo}</p>} */}
-                    </div>
-                    <div className={styles.containerAsuntoCorreo}>
-                        <label htmlFor={asuntoCorreoID}>Asunto:</label>
-                        <input type="text" required minLength={5} placeholder="Asunto aquí..." />
-                    </div>
-                    <div className={styles.containerMensajeCorreo}>
-                        <label htmlFor={mensajeCorreoID}>Mensaje:</label>
-                        <textarea required minLength={1} cols={10}/>
-                    </div>
-
-                    <button className={styles.btnCrearCorreo1}>Siguiente</button>
+            <div className={`${styles.containerMenuLateralCrearCorreo} ${crearCorreo ? styles.toggleCrearCorreoMenu : ""} `}>
                 
-                </div>
+            <button className={styles.cerrarMenuLateral} onClick={toggleCrearCorreo}><FaXmark /></button>
+
+            {!siguienteIsClicked &&
+                    <FormsCrearCorreoCampana 
+                    siguienteIsClicked = {siguienteIsClicked}
+                    setSiguienteIsClicked = {setSiguienteIsClicked}
+                    submitSiguiente = {submitSiguiente}
+                    setSubmitSiguiente = {setSubmitSiguiente}
+                     />
+            }
+
+            {siguienteIsClicked &&
+                    <FormCrearCorreoDos 
+                    submitSiguiente = {submitSiguiente}
+                    setSubmitSiguiente = {setSubmitSiguiente}
+                    />
+            }
+                    
+            </div>
         
         </header>
 

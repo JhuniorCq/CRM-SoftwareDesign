@@ -61,8 +61,6 @@ const VistaGestion = () => {
         console.log("cambiado a todas las campañas!");
     }
     
-
-    
     if(isLoading) return <p>Loading...</p>
     else if(isError) return <p>Error : {error.message}</p>
 
@@ -125,12 +123,12 @@ const VistaGestion = () => {
                                         <tr key={usuario.id}>
                                             
                                             <td>{usuario.id}</td>
-                                            <td>{usuario.name}</td>
-                                            <td>{usuario.description}</td>
-                                            <td>{usuario.objectives}</td>
-                                            <td>{usuario.created.toLocaleString()}</td>
-                                            <td>{usuario.starts.toLocaleString()}</td>
-                                            <td>{usuario.ends.toLocaleString()}</td>
+                                            <td className={styles.campanaDescripcion}>{usuario.name}</td>
+                                            <td className={styles.campanaDescripcion}>{usuario.description}</td>
+                                            <td className={styles.campanaDescripcion}>{usuario.objectives}</td>
+                                            <td className={styles.campanaDescripcion}>{usuario.created.toLocaleString()}</td>
+                                            <td className={styles.campanaDescripcion}>{usuario.starts.toLocaleString()}</td>
+                                            <td className={styles.campanaDescripcion}>{usuario.ends.toLocaleString()}</td>
                                         </tr>
                                     ))}
                             </tbody>
