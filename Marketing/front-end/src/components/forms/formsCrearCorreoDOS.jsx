@@ -1,225 +1,141 @@
+import React, { useState, useEffect, useId } from "react";
 import styles from "./formsCrearCorreoDOS.module.css";
-import { useEffect, useId, useRef, useState } from "react";
-import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
-import { createCorreosCampanas, getCorreosCampanas } from "../campanasAPI";
-import { useCampanas } from "../store/useCampanas";
 
-const FormCrearCorreoDos = (props) => {
-  const correoEnviarID = useId();
-  const radioIDUno = useId();
-  const radioIDDos = useId();
+function FormCrearCorreoDos({ submitSiguiente, setSubmitSiguiente }) {
+  const [emailUser, setEmail] = useState("");
+  const [sendNow, setSendNow] = useState(true);
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const [formFinal, setFormFinal] = useState([]);
 
-  const [correoCliente, setCorreoCliente] = useState("");
-  const [secondFormIsCompleted, setSecondFormIsCompleted] = useState(false);
-
-  const [opcionEnviar, setOpcionEnviar] = useState("");
-  const [isEnviarMasTardeSelectedState, setIsEnviarMasTardeSelectedState] =
-    useState(false);
-  const [isEnviarAhoraSelectedState, setIsEnviarAhoraSelectedState] =
-    useState(false);
-
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
-
-  // estado global zustand para contar los correos creados
-  const addCorreoCount = useCampanas((state) => state.addCorreosEnviados);
-
-  // esto lo puedo hacer con ZUSTAND PARA MANEJAR MEJOR EL ESTADO GLOBAL
-  const { submitSiguiente, setSubmitSiguiente } = props;
-
-  const { data } = useQuery({
-    queryKey: ["correoscampanascreadas"],
-    queryFn: getCorreosCampanas,
-  });
-
-  const queryClient = useQueryClient();
-  const agregarCorreoCampana = useMutation({
-    mutationFn: createCorreosCampanas,
-    onSuccess: () => {
-      queryClient.invalidateQueries("correoscampanascreadas");
-      console.log("campaña añadida correctamente!");
-      console.log(data);
-    },
-  });
-
-  const handleCorreoChange = (e) => {
-    const nuevoCorreo = e.target.value;
-
-    const correoRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-
-    if (correoRegex.test(nuevoCorreo)) {
-      setCorreoCliente(nuevoCorreo);
-    } else {
-      // poner mensaje de error
-    }
-  };
+  const emailUserID = useId();
+  const fechaID = useId();
+  const horaID = useId();
 
   useEffect(() => {
-    handleCorreoChange({
-      target: { value: correoCliente },
-    });
-  }, [correoCliente]);
+    if (sendNow) {
+      setIsSubmitDisabled(!emailUser);
+    } else {
+      setIsSubmitDisabled(!emailUser || !date || !time || isDateTimeValid());
+    }
+  }, [emailUser, sendNow, date, time]);
 
-  const handleRadioChange = (e) => {
-    const selectedOption = e.target.value;
-    setOpcionEnviar(selectedOption);
+  const isDateTimeValid = () => {
+    const selectedDateTime = new Date(`${date}T${time}`);
+    const currentDateTime = new Date();
+    return selectedDateTime < currentDateTime;
   };
 
-  //   validando los DATES & TIMES
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSendOptionChange = (e) => {
+    setSendNow(e.target.value === "now");
+  };
+
   const handleDateChange = (e) => {
-    setSelectedDate(e.target.value);
+    setDate(e.target.value);
   };
 
   const handleTimeChange = (e) => {
-    setSelectedTime(e.target.value);
+    setTime(e.target.value);
   };
 
-  useEffect(() => {
-    const isEnviarAhoraSelectedEffect = opcionEnviar === "ahora";
-    const isEnviarMasTardeSelectedEffect = opcionEnviar === "masTarde";
-    const isFechasCompletas = selectedDate && selectedTime;
-
-    if (isEnviarMasTardeSelectedEffect) {
-      setIsEnviarMasTardeSelectedState(true);
-      setIsEnviarAhoraSelectedState(false);
-    }
-
-    if (isEnviarAhoraSelectedEffect) {
-      setIsEnviarMasTardeSelectedState(false);
-      setIsEnviarAhoraSelectedState(true);
-    }
-
-    if (correoCliente.length >= 5 && isEnviarAhoraSelectedState) {
-      setSecondFormIsCompleted(true);
-      console.log("PRIMERO");
-    } else if (correoCliente.length >= 5 && isFechasCompletas) {
-      setSecondFormIsCompleted(true);
-      console.log("SEGUNDO");
-    } else {
-      setSecondFormIsCompleted(false);
-      console.log("ninguno");
-    }
-  }, [correoCliente, opcionEnviar, selectedDate, selectedTime]);
-
-  // useEffect(() => {
-  //   const isDateValid = new Date(selectedDate) > new Date();
-  //   const isToday = new Date(selectedDate) === new Date();
-
-  //   if (isToday) {
-
-  // ..................................................................
-
-  //   }
-  // }, [selectedDate]);
-
-  const isTimeEnabled = new Date(selectedDate) >= new Date();
-
-  const handleSubmitCorreo = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const formDataDos = new FormData(e.target);
-    const newCorreoDos = Object.fromEntries(formDataDos);
+    const newFinalForm = new FormData(e.target);
+    const newCorreoDos = Object.fromEntries(newFinalForm);
 
-    setSubmitSiguiente((prevState) => ({
+    setFormFinal((prevState) => ({
       ...prevState,
-      newCorreoDos,
+      ...submitSiguiente,
+      ...newCorreoDos,
     }));
 
-    console.log(submitSiguiente);
-    // agregarCorreoCampana.mutate({
-    //     ...submitSiguiente
-    // })
-    // addCorreoCount()
+    console.log(formFinal);
+
+    // Aquí puedes enviar el correo o realizar la acción deseada.
   };
 
-  const getCurrentDate = () => {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = (today.getMonth() + 1).toString().padStart(2, "0"); // Añade ceros iniciales si es necesario
-    const day = today.getDate().toString().padStart(2, "0"); // Añade ceros iniciales si es necesario
-    return `${year}-${month}-${day}`;
+  const handleConsoleLog = () => {
+    console.log(formFinal);
   };
 
   return (
-    <form
-      className={`${styles.formCrearCorreoCampana}`}
-      onSubmit={handleSubmitCorreo}
-    >
+    <form className={styles.formCrearCorreoCampana} onSubmit={handleSubmit}>
       <div className={styles.containerCorreoCliente}>
-        <label htmlFor={correoEnviarID}>Enviar a...</label>
+        <label htmlFor={emailUserID}>Enviar a:</label>
         <input
+          id={emailUserID}
           type="email"
+          value={emailUser}
+          name="emailUser"
+          onChange={handleEmailChange}
           required
-          placeholder="name@email.com"
-          name="clientEmail"
-          id={correoEnviarID}
-          onChange={handleCorreoChange}
         />
       </div>
-
       <div className={styles.containerOpcionEnvio}>
-        <span>Opciones de envío:</span>
-        <div className={styles.checkBoxesFormCrearCorreo}>
-          <label className={styles.labelRadioButtonUno} htmlFor={radioIDUno}>
-            <span>Enviar Ahora</span>
-            <input
-              type="radio"
-              required
-              id={radioIDUno}
-              value="ahora"
-              name="sendOption"
-              onChange={handleRadioChange}
-            />
-          </label>
-
-          <label className={styles.labelRadioButtonDos} htmlFor={radioIDDos}>
-            <span>Enviar más tarde</span>
-            <input
-              type="radio"
-              id={radioIDDos}
-              value="masTarde"
-              name="sendOption"
-              onChange={handleRadioChange}
-            />
-          </label>
-        </div>
+        <label className={styles.labelRadioButtonUno}>
+          ¿Enviar ahora?
+          <input
+            type="radio"
+            value="now"
+            name="send"
+            checked={sendNow}
+            onChange={handleSendOptionChange}
+          />
+        </label>
+        <label className={styles.labelRadioButtonDos}>
+          ¿Enviar más tarde?
+          <input
+            type="radio"
+            value="later"
+            name="send"
+            checked={!sendNow}
+            onChange={handleSendOptionChange}
+          />
+        </label>
+      </div>
+      {!sendNow && (
         <div
-          className={`${styles.optEnviarMasTarde} ${
-            isEnviarMasTardeSelectedState
-              ? styles.abrirOptMasTarde
-              : styles.hideOptMasTarde
+          className={`${styles.containerDateTime} ${
+            !sendNow ? styles.abrirOptMasTarde : styles.hideOptMasTarde
           }`}
         >
-          <span>Programar Envío:</span>
-          <div className={styles.containerInputsDate}>
-            <input
-              type="date"
-              // required={isEnviarMasTardeSelected}
-              min={getCurrentDate(new Date())}
-              onChange={handleDateChange}
-              name="sendingDate"
-            />
-
-            <input
-              type="time"
-              // required={isEnviarMasTardeSelected}
-              disabled={!isTimeEnabled}
-              onChange={handleTimeChange}
-              name="sendingTime"
-            />
-          </div>
+          <label htmlFor={fechaID}>Fecha:</label>
+          <input
+            type="date"
+            value={date}
+            name="date"
+            id={fechaID}
+            onChange={handleDateChange}
+            required
+          />
+          <label htmlFor={horaID}>Hora:</label>
+          <input
+            type="time"
+            value={time}
+            name="time"
+            id={horaID}
+            onChange={handleTimeChange}
+            required
+          />
         </div>
-      </div>
-
+      )}
       <button
-        className={`${styles.btnCrearCorreo1} ${
-          !secondFormIsCompleted ? styles.botonDisabled : ""
+        className={`${styles.btnSubmitFinalForm} ${
+          isSubmitDisabled ? styles.botonDisabled : ""
         }`}
-        disabled={!secondFormIsCompleted}
+        type="submit"
+        disabled={isSubmitDisabled}
       >
-        Revisar y enviar
+        Enviar
       </button>
+      <button onClick={handleConsoleLog}>handleconsolelog</button>
     </form>
   );
-};
+}
 
 export default FormCrearCorreoDos;

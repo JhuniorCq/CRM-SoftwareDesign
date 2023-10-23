@@ -63,10 +63,6 @@ const FormsCrearCorreoCampana = (props) => {
     const formData = new FormData(e.target);
     const newCorreo = Object.fromEntries(formData);
     console.log(newCorreo);
-    // agregarCorreoCampana.mutate({
-    //     ...newCorreo
-    // })
-    // addCorreoCount()
 
     setSubmitSiguiente((prevState) => ({
       ...prevState,
