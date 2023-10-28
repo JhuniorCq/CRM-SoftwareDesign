@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
+
+:root{
+    --color-primario : #2D3E50;
+    --color-btn-light : #c4beeb;
+    --color-btn-primary : #6959cb;
+    --color-border : rgba(0, 0, 0, 0.173);
+    --color-fechas : rgb(213, 197, 197);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    font-size: 1rem;
+}
+
+.containerBeforeVistaLlamadas{
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    align-items: center;
+}
+
+.btnCrearLlamadas{
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    width: 130px;
+    cursor: pointer;
+    background-color: var(--color-btn-primary);
+    color: white;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    font-family: sans-serif;
+
+} 
+
+.vistaLlamadas{
+    background-color: blue;
+    height: 300px;
+    width: 200px;
+}
+
+.btnCrearLlamadas:hover{
+    
+    background-color: rgb(59, 59, 208);
+}

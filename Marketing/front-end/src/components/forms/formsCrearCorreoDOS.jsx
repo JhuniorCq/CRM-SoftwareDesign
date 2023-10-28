@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useId } from "react";
 import styles from "./formsCrearCorreoDOS.module.css";
+import { useCampanas } from "../store/useCampanas";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { createCorreosCampanas, getCorreosCampanas } from "../campanasAPI";
 
 function FormCrearCorreoDos({ submitSiguiente, setSubmitSiguiente }) {
   const [emailUser, setEmail] = useState("");
@@ -7,11 +10,26 @@ function FormCrearCorreoDos({ submitSiguiente, setSubmitSiguiente }) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
-  const [formFinal, setFormFinal] = useState([]);
 
   const emailUserID = useId();
   const fechaID = useId();
   const horaID = useId();
+
+  const addCorreoCount = useCampanas((state) => state.addCorreosEnviados);
+
+  const { data } = useQuery({
+    queryKey: ["correoscampanascreadas"],
+    queryFn: getCorreosCampanas,
+  });
+  const queryClient = useQueryClient();
+  const agregarCorreoCampana = useMutation({
+    mutationFn: createCorreosCampanas,
+    onSuccess: () => {
+      queryClient.invalidateQueries("correoscampanascreadas");
+      console.log("campaña añadida correctamente!");
+      console.log(data);
+    },
+  });
 
   useEffect(() => {
     if (sendNow) {
@@ -48,19 +66,22 @@ function FormCrearCorreoDos({ submitSiguiente, setSubmitSiguiente }) {
     const newFinalForm = new FormData(e.target);
     const newCorreoDos = Object.fromEntries(newFinalForm);
 
-    setFormFinal((prevState) => ({
-      ...prevState,
+    // setSubmitSiguiente((prevState) => ({
+    //   ...prevState,
+    //   ...newCorreoDos,
+    // }));
+
+    agregarCorreoCampana.mutate({
       ...submitSiguiente,
       ...newCorreoDos,
-    }));
-
-    console.log(formFinal);
+    });
+    addCorreoCount();
 
     // Aquí puedes enviar el correo o realizar la acción deseada.
   };
 
   const handleConsoleLog = () => {
-    console.log(formFinal);
+    console.log(submitSiguiente);
   };
 
   return (

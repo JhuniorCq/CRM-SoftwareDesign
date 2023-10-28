@@ -292,7 +292,7 @@
       "ends": "1213-12-12",
       "objectives": "eeee",
       "description": "caacacacacacacacacaacac",
-      "targeredAge": "4-5", 
+      "targeredAge": "4-5",
       "gender": "femenino",
       "department": "La_Libertad",
       "district": "Pataz",
@@ -385,21 +385,57 @@
   "correoscampanascreadas": [
     {
       "id": 1,
-      "email": "hola123@gmail.com",
-      "affair": "estoy probando , este es un asunto",
-      "message": "estoy probando, este es un mensaje"
+      "emailUser": "hola123@gmail.com",
+      "affairUser": "estoy probando , este es un asunto",
+      "messageUser": "estoy probando, este es un mensaje"
     },
     {
-      "email": "aaa@hotmail.com",
-      "affair": "elelelele",
-      "message": "asnandaoidandio",
+      "emailUser": "aaa@hotmail.com",
+      "affairUser": "elelelele",
+      "messageUser": "asnandaoidandio",
       "id": 2
     },
     {
-      "email": "alalalalala@gmail.com",
-      "affair": "hola asunto raro",
-      "message": "holassasmaodmoiad",
+      "emailUser": "alalalalala@gmail.com",
+      "affairUser": "hola asunto raro",
+      "messageUser": "holassasmaodmoiad",
       "id": 3
+    },
+    {
+      "newCorreo": {
+        "email": "awdaw@gmail.com",
+        "affair": "aeinaofni",
+        "message": "ofinaefoin"
+      },
+      "id": 4
+    },
+    {
+      "newCorreo": {
+        "email": "awdaw@gmail.com",
+        "affair": "aeinaofni",
+        "message": "ofinaefoin"
+      },
+      "emailUser": "aaa@gmail.com",
+      "send": "now",
+      "id": 5
+    },
+    {
+      "newCorreo": {
+        "email": "aaaadiamefoenafneao@gmail.com",
+        "affair": "eaofnaoin",
+        "message": "QOINFON"
+      },
+      "id": 6
+    },
+    {
+      "newCorreo": {
+        "email": "wadadad@gmail.com",
+        "affair": "aeoifn",
+        "message": "oaenfioan\n"
+      },
+      "emailUser": "hola@gmail.com",
+      "send": "now",
+      "id": 7
     }
   ]
 }
