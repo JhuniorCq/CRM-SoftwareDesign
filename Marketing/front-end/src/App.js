@@ -7,6 +7,8 @@ import { CorreoAdministrar } from "./components/marketing/marketingCorreoAdminis
 import { CorreoAnalizar } from "./components/marketing/marketingCorreoAnalizar";
 import { CorreoEstado } from "./components/marketing/marketingCorreoEstado";
 import LlamadasClientes from "./components/llamadas/llamadas";
+import LlamadasAdministrar from "./components/llamadas/llamadasAdministrar";
+import LlamadasEstado from "./components/llamadas/llamadasEstado";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path={'/analizar'} element={<CorreoAnalizar />} />
         <Route path={'/estado'} element={<CorreoEstado />} />
         <Route path={'/llamadas'} element={<LlamadasClientes />} />
+        <Route path={'/llamadas/administrarllamadas'} element={<LlamadasAdministrar />} />
+        <Route path={'/llamadas/estadollamadas'} element={<LlamadasEstado />} />
       </Routes>
     </BrowserRouter>
   );

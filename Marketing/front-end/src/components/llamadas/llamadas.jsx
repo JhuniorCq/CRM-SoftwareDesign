@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavbarParteGris from "../navBarParteGris";
 import styles from "./stylesLlamadas/llamadasClientes.module.css";
-import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { ControlVistaLlamadas } from "./controlVistaLlamadas";
+import { CrearLlamadaLateral } from "./asideCrearLlamada";
+import { getLlamadasCliente } from "./llamadasAPI";
+import { useQuery } from "@tanstack/react-query";
+
 const LlamadasClientes = () => {
   const [inputCall, setInputCall] = useState("");
 
@@ -9,42 +14,62 @@ const LlamadasClientes = () => {
     setInputCall(e.target.value);
   };
 
-  const vistaLlamadas = ["Clientes", "Administrar", "Estado"];
+  const { data, isLoading, isError, error } = useQuery({
+    queryFn: getLlamadasCliente,
+    queryKey: "clientesllamadas",
+  });
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  if (isError) {
+    return <p>There's an error {error}</p>;
+  }
 
   return (
-    <amin>
+    <main>
       <NavbarParteGris />
-      <section className={styles.containerBeforeVistaLlamadas}>
-        <h3>Llamadas</h3>
-        <button className={styles.btnCrearLlamadas}>Crear Llamada</button>
-      </section>
-      <section className={styles.vistaLlamadas}>
-        <ul>
-          {vistaLlamadas.map((vista) => {
-            <li key={vista}>
-              <Link to={`/llamada/${vista}`}>{vista}</Link>
-            </li>;
-          })}
-        </ul>
-      </section>
-      <div className={styles.containerTotal}>
-        <section className={styles.listaLlamadasSide}>
-          <h3>Lista</h3>
-          <div className={styles.containerListaButtons}>
-            <button>Todas las llamadas</button>
-            <button>Programadas</button>
-            <button>Realizadas</button>
-          </div>
-        </section>
-        <aside>
+      <ControlVistaLlamadas />
+      <div className={styles.containerTotalClientes}>
+        <h4>Público Objetivo</h4>
+        <h6>Público objetivo</h6>
+        <div className={styles.containerInput}>
           <input
             type="text"
             onChange={handleChangeCallInput}
-            placeholder="Llamadas 📱"
+            placeholder="Buscar llamadas 📱"
+            value={inputCall}
           />
-        </aside>
+        </div>
+        <div className={`table-responsive ${styles.containerTable}`}>
+          <table className="table table-hover table-bordered table-info">
+            <thead className="table-light">
+              <tr className="bg-primary">
+                <td>id</td>
+                <td>Nombres</td>
+                <td>Apellidos</td>
+                <td>Correo electrónico</td>
+                <td>Género</td>
+                <td>Celular</td>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((llamada) => (
+                <tr key={llamada.id}>
+                  <td>{llamada.id}</td>
+                  <td>{llamada.names}</td>
+                  <td>{llamada.surnames}</td>
+                  <td>{llamada.email}</td>
+                  <td>{llamada.gender}</td>
+                  <td>{llamada.phone}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </amin>
+      <CrearLlamadaLateral />
+    </main>
   );
 };
 

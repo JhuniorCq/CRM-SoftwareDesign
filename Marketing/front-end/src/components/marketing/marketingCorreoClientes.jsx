@@ -35,12 +35,6 @@ export const CorreoClientes = () => {
     queryClient.refetchQueries(["publicocorreoscampanas", { nameCliente }]);
   }, 1000); // Adjust the debounce delay as needed
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission
-    // Trigger a refetch when the user submits the search
-    queryClient.refetchQueries(["publicocorreoscampanas", { nameCliente }]);
-  };
-
   return (
     <body>
       <NavbarCorreo />

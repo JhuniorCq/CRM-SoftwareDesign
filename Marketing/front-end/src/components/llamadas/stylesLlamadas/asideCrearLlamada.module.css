@@ -1,0 +1,33 @@
+
+.crearLlamadaLateral{
+    position: absolute;
+    background-color: aquamarine;
+    top: 4rem;
+    right: 0;
+    width: 30vw;
+    height: 60vh;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transform:translateX(100%);
+    opacity: 0;
+    transition: opacity .3s ease, transform .3s ease;
+}
+
+.showCrearLlamadaLateral{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.cerrarCrearLlamada{
+    cursor: pointer;
+    color: navy;
+    font-size: 2rem;
+    transition: font-size .3s ease;
+}
+
+.cerrarCrearLlamada:hover{
+    font-size: 2.1rem;
+}
